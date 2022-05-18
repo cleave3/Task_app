@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    // "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "rootDirs": [
+      "./src"
+    ],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "interfaces"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}
