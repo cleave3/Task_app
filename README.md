@@ -49,14 +49,6 @@ npm run test
     
     Set ```x-access-token: {{ACCESS_TOKEN}}``` in the header
 
-```
-{
-  "status": boolean
-  "code": number
-  "message": string
-  "data": null | interface{} | any[] 
-}
-```
 ### MODULE
 The Application has the following modules
 - User
