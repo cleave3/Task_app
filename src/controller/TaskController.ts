@@ -16,45 +16,45 @@ class TaskController {
         }
     }
 
-    static async getTask({ user: { userId }, params: { taskId } }: IRequest, res: Response) {
+    static async getTask({ params: { taskId } }: IRequest, res: Response) {
         try {
-            const task = await TaskService.getTask(taskId, userId)
+            const task = await TaskService.getTask(taskId)
             return success(res, 200, task);
         } catch ({ message, code }) {
             return badRequest(res, code || 500, message)
         }
     }
 
-    static async getTasks({ user: { userId } }: IRequest, res: Response) {
+    static async getTasks(_: IRequest, res: Response) {
         try {
-            const tasks = await TaskService.getTasks(userId)
+            const tasks = await TaskService.getTasks()
             return success(res, 200, tasks);
         } catch ({ message, code }) {
             return badRequest(res, code || 500, message)
         }
     }
 
-    static async updateTask({ body, user: { userId }, params: { taskId } }: IRequest, res: Response) {
+    static async updateTask({ body, params: { taskId } }: IRequest, res: Response) {
         try {
-            const task = await TaskService.updateTask(taskId, body, userId)
+            const task = await TaskService.updateTask(taskId, body)
             return success(res, 200, task, "Task updated successfully");
         } catch ({ message, code }) {
             return badRequest(res, code || 500, message)
         }
     }
 
-    static async markAsCompleted({ user: { userId }, params: { taskId } }: IRequest, res: Response) {
+    static async markAsCompleted({ params: { taskId } }: IRequest, res: Response) {
         try {
-            const task = await TaskService.updateTask(taskId, { isCompleted: true }, userId)
+            const task = await TaskService.updateTask(taskId, { isCompleted: true }, )
             return success(res, 200, task, "Task completed successfully");
         } catch ({ message, code }) {
             return badRequest(res, code || 500, message)
         }
     }
 
-    static async deleteTask({ user: { userId }, params: { taskId } }: IRequest, res: Response) {
+    static async deleteTask({ params: { taskId } }: IRequest, res: Response) {
         try {
-            const task = await TaskService.deleteTask(taskId, userId)
+            const task = await TaskService.deleteTask(taskId)
             return success(res, 200, task, "Task deleted successfully");
         } catch ({ message, code }) {
             return badRequest(res, code || 500, message)

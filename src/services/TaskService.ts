@@ -10,19 +10,19 @@ class TaskServices {
         return task;
     }
 
-    static async getTask(taskId: string, userId: string) {
-        const task = await Task.findOne({ _id: taskId, userId });
+    static async getTask(taskId: string) {
+        const task = await Task.findOne({ _id: taskId });
         if (!task) throwError("Task not found", 404)
         return task;
     }
 
-    static async getTasks(userId: string) {
-        const tasks = await Task.find({ userId });
+    static async getTasks() {
+        const tasks = await Task.find();
         return tasks
     }
 
-    static async updateTask(taskId, input: TaskInput, userId: string) {
-        const task = await this.getTask(taskId, userId)
+    static async updateTask(taskId, input: TaskInput) {
+        const task = await this.getTask(taskId)
 
         if(task.isCompleted) throwError("Task has been completed", 409);
 
@@ -36,13 +36,13 @@ class TaskServices {
 
         await Task.findOneAndUpdate({ _id: task._id }, updateData)
 
-        const updatedTask = await this.getTask(taskId, userId)
+        const updatedTask = await this.getTask(taskId)
 
         return updatedTask;
     }
 
-    static async deleteTask(taskId: string, userId: string) {
-        const task = await this.getTask(taskId, userId);
+    static async deleteTask(taskId: string) {
+        const task = await this.getTask(taskId);
 
         const delTask = await Task.findOneAndDelete({ _id: task._id })
 
