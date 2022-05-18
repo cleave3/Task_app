@@ -8,8 +8,8 @@
 - Add a .env file with the follow content
 ```
 APP_SECRET=
-DATABASE_URL=
-TEST_DB=
+DB_NAME=
+TEST_DB_NAME=
 ```
 - Start docker mongoDB container in your pc
 
